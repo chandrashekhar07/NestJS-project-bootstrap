@@ -12,13 +12,10 @@ export const configProvider = {
             API_PORT: Joi.string().required(),
             API_PREFIX: Joi.string().required(),
             SWAGGER_ENABLE: Joi.string().required(),
-            TYPEORM_CONNECTION: Joi.string().required(),
-            TYPEORM_HOST: Joi.string().required(),
-            TYPEORM_PORT: Joi.string().required(),
-            TYPEORM_USERNAME: Joi.string().required(),
-            TYPEORM_PASSWORD: Joi.string().required(),
-            TYPEORM_DATABASE: Joi.string().required(),
-            TYPEORM_ENTITIES: Joi.string().required()
+            DATABASE_ENTITIES: Joi.string().required(),
+            DATABASE_TYPE: Joi.string().required(),
+            DATABASE_NAME: Joi.string().required(),
+            DATABASE_SYNCHRONIZE: Joi.string().required()
         });
 
         const result = validationSchema.validate(env);
@@ -31,13 +28,10 @@ export const configProvider = {
             API_PORT: _.toNumber(env.API_PORT),
             API_PREFIX: `${env.API_PREFIX}`,
             SWAGGER_ENABLE: _.toNumber(env.SWAGGER_ENABLE),
-            TYPEORM_CONNECTION: `${env.TYPEORM_CONNECTION}`,
-            TYPEORM_HOST: `${env.TYPEORM_HOST}`,
-            TYPEORM_PORT: _.toNumber(env.TYPEORM_PORT),
-            TYPEORM_USERNAME: `${env.TYPEORM_USERNAME}`,
-            TYPEORM_PASSWORD: `${env.TYPEORM_PASSWORD}`,
-            TYPEORM_DATABASE: `${env.TYPEORM_DATABASE}`,
-            TYPEORM_ENTITIES: `${env.TYPEORM_ENTITIES}`
+            DATABASE_ENTITIES: `${env.DATABASE_ENTITIES}`,
+            DATABASE_TYPE: `${env.DATABASE_TYPE}`,
+            DATABASE_NAME: `${env.DATABASE_NAME}`,
+            DATABASE_SYNCHRONIZE: env.DATABASE_SYNCHRONIZE === 'true'
         };
     }
 };

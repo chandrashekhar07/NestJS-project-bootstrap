@@ -5,17 +5,11 @@ export interface Config {
 
     readonly SWAGGER_ENABLE: number;
 
-    readonly TYPEORM_CONNECTION: string;
+    readonly DATABASE_TYPE: string;
 
-    readonly TYPEORM_HOST: string;
+    readonly DATABASE_NAME: string;
 
-    readonly TYPEORM_PORT: number;
+    readonly DATABASE_SYNCHRONIZE: boolean;
 
-    readonly TYPEORM_USERNAME: string;
-
-    readonly TYPEORM_PASSWORD: string;
-
-    readonly TYPEORM_DATABASE: string;
-
-    readonly TYPEORM_ENTITIES: string;
+    readonly DATABASE_ENTITIES: string;
 }

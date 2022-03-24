@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { LogInterceptor } from './flow';
+import { LogInterceptor } from './security';
 import { configProvider, LoggerService } from './provider';
 import { WelcomeController } from './welcome.controller';
 

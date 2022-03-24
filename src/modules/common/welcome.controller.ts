@@ -5,7 +5,6 @@ export class WelcomeController {
     @Get()
     @HttpCode(HttpStatus.OK)
     public login(): string {
-        const version = process.env.npm_package_version;
-        return `Welcome to BlushRush. Build Version : ${version}`;
+        return 'Welcome Build Version : 0.0';
     }
 }

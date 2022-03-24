@@ -2,25 +2,24 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
-
 import { INestApplication } from '@nestjs/common';
 import { ApplicationModule } from './modules/app.module';
 import { CommonModule, LogInterceptor } from './modules/common';
 import { configProvider } from './modules/common/provider';
 
-const API_DEFAULT_PORT = 3000;
-const API_DEFAULT_PREFIX = '/api/v1/';
+const API_DEFAULT_PORT = 4000;
+const API_DEFAULT_PREFIX = '/api/';
 
-const SWAGGER_TITLE = 'Passenger API';
-const SWAGGER_DESCRIPTION = 'API used for blush rush Nepal';
+const SWAGGER_TITLE = 'Test API';
+const SWAGGER_DESCRIPTION = 'API for test';
 const SWAGGER_PREFIX = '/docs';
 
 async function bootstrap(): Promise<void> {
     const app = await NestFactory.create(ApplicationModule);
 
-    app.setGlobalPrefix(process.env.API_PREFIX || API_DEFAULT_PREFIX);
+    app.setGlobalPrefix(configProvider.useFactory().API_PREFIX || API_DEFAULT_PREFIX);
 
-    if (!process.env.SWAGGER_ENABLE || process.env.SWAGGER_ENABLE === '1') {
+    if (configProvider.useFactory().SWAGGER_ENABLE === 1) {
         createSwagger(app);
     }
 
